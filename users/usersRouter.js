@@ -4,11 +4,11 @@ const validate = require("../api/validate.js");
 
 router.use("/:id", validate.user);
 
-/* router.get("/", (req, res, next) => {
+router.get("/", (req, res, next) => {
   Users.findAll()
     .then(users => res.status(200).json(users))
     .catch(err => next({ code: 500, message: "Error retrieving users", err }));
-}); */
+}); 
 
 router.get("/:id", (req, res, next) => {
   const user = req.user;

@@ -17,9 +17,12 @@ describe("Auth Router", () => {
   describe("POST /api/auth/register", () => {
     let res = {};
     beforeAll(async () => {
-      res = await request(server).post("/api/auth/register")
-        .send(testUser);
-    });
+      const [truncate, response] = await Promise.all([
+          db("users").truncate(),
+          request(server).post("/api/auth/register").send(testUser)
+      ]);
+      res = response
+  });
 
     test("should return status 201 Created", () => {
       expect(res.status).toBe(201);

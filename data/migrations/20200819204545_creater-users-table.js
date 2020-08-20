@@ -6,13 +6,13 @@ exports.up = function(knex) {
         .notNullable();
       tbl.string("lname", 128)
         .notNullable();
-      tbl.varchar("email", 128)
+      tbl.string("email", 128)
         .notNullable()
         .unique();
-      tbl.varchar("username", 128)
+      tbl.string("username", 128)
         .notNullable()
         .unique();
-      tbl.varchar("password", 128)
+      tbl.text("password", 128)
         .notNullable();
     })
 };

@@ -5,7 +5,7 @@ exports.up = async function (knex) {
     table.text('source').notNullable()
   })
 
-  await knex.schema.createTable('steps', table => {
+  await knex.schema.createTable('instructions', table => {
     table.increments('id').primary()
     table.text('description').notNullable()
     table
@@ -68,6 +68,6 @@ exports.down = async function (knex) {
   await knex.schema.dropTableIfExists('unit')
   await knex.schema.dropTableIfExists('quantity')
   await knex.schema.dropTableIfExists('ingredients')
-  await knex.schema.dropTableIfExists('steps')
+  await knex.schema.dropTableIfExists('instructions')
   await knex.schema.dropTableIfExists('recipes')
 }

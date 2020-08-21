@@ -2,6 +2,7 @@ exports.up = async function (knex) {
   await knex.schema.createTable('recipes', table => {
     table.increments('id')
     table.text('name').unique().notNullable()
+    table.text('source').notNullable()
   })
 
   await knex.schema.createTable('steps', table => {

@@ -11,6 +11,14 @@ exports.seed = async function (knex) {
       instructions: "instruction section",
       category: 'Korean', 
       image: '',
-      user_id: 1}
+      user_id: 1},
+    { id: 2,
+      title: 'Kimbap', 
+      source: 'Aunt Kim', 
+      ingredients: 'rice, crab, carrot, sea weed', 
+      instructions: "instruction section",
+      category: 'Korean', 
+      image: '',
+      user_id: 2}
   ])
 }

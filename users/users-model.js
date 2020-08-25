@@ -22,7 +22,7 @@ function findById(id) {
 }
 
 function add(user) {
-  return db("users").insert(user, "id").then(ids => findById(ids[0]));
+  return db("users").returning('id').insert(user, "id").then(ids => findById(ids[0]));
 }
 
 function update(changes, id) {

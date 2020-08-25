@@ -17,8 +17,8 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.get('/:id/receipts', (req, res) => {
-  const user_id = req.params.id;
-  Users.findById(user_id)
+  const user = req.user;
+  Users.findBy(user)
   .then(user => {
     user ?
     Recipes.find()
@@ -50,6 +50,7 @@ router.post('/:id', (req, res) => {
           res.status(201).json({ success: `The following has been added to the User with an ID of ${user_id}...`, newRecipe })
       })
       .catch((err) => {
+        console.log(err.message)
         res.status(401).json({ error: 'Failed to post recipe'})
       }):null
   })

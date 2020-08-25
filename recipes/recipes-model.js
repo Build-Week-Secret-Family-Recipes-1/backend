@@ -4,19 +4,11 @@ async function find() {
   return await db('recipes')
 }
 
-function findById(id) {
+function findRecipeById(id) {
   return db('recipes')
     .where('recipes.id', id)
-    .select('recipes.name')
 }
 
-function findInstructions(id) {
-  return db('recipes')
-    .where('recipes.id', id)
-    .join('steps', 'steps.recipes_id', 'recipes.id')
-    .select('steps.description as instruction', 'steps.step as stepOrder')
-    .orderBy('steps.step', 'asc')
-}
 
 const addRecipe= (recipe) => {
   return db ('recipes')
@@ -28,8 +20,7 @@ const addRecipe= (recipe) => {
 
 module.exports = {
   find,
-  findById,
-  findInstructions,
+  findRecipeById,
   addRecipe
 }
 

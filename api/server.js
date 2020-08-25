@@ -1,6 +1,6 @@
 const express = require("express");
 const helmet = require("helmet");
-const cors = require("helmet");
+const cors = require("cors");
 const morgan = require("morgan");
 
 const authRouter = require("../auth/authRouter.js");

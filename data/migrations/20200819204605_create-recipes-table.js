@@ -106,4 +106,5 @@ exports.down = async function (knex) {
   // await knex.schema.dropTableIfExists('ingredients')
   // await knex.schema.dropTableIfExists('instructions')
   await knex.schema.dropTableIfExists('recipes')
+  // await knex.schema.dropTableIfExists('category')
 }

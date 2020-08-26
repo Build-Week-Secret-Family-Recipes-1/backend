@@ -111,6 +111,7 @@ router.put('/:id/update/:r_id', (req, res) => {
 router.delete('/:id/delete/:r_id', (req, res) => {
   const { id, r_id } = req.params;
   
+  console.log('r_id', r_id);
   Users.findById(id)
   .then(user => {
     user ?
@@ -123,8 +124,8 @@ router.delete('/:id/delete/:r_id', (req, res) => {
         }
       })
       .catch((err) => {
-        console.log(err.message)
-        res.status(401).json({ error: 'Failed to post recipe'})
+        console.log('delete', err.message)
+        res.status(500).json({ error: 'Failed to delete recipe'})
       }):null
   })
   .catch((err) => {

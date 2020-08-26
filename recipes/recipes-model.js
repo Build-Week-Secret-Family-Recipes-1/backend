@@ -18,9 +18,6 @@ function findRecipeByCategory(category, user_id) {
 const addRecipe= (recipe) => {
   return db ('recipes')
   .insert(recipe)
-  .then(ids => {
-    return findRecipeById(ids[0])
-  })
 }
 
 function updateRecipe(changes, r_id) {

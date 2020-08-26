@@ -17,8 +17,7 @@ server.use(express.json());
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", authenticate, usersRouter);
-server.use('/api/recipes', recipes)
-server.use('/api/ingredients', ingredients)
+server.use('/api/users', recipes)
 
 server.get("/", (req, res) => res.json({api: "up"}));
 

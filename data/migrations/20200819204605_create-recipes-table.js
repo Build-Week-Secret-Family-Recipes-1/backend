@@ -81,7 +81,7 @@ exports.up = async function (knex) {
   // })
 
   await knex.schema.createTable('recipes', tbl => {
-    tbl.increments()
+    tbl.increments('r_id')
     tbl.string('title', 255).notNullable()
     tbl.string('source', 255)
     tbl.string('ingredients', 255).notNullable()
@@ -89,7 +89,13 @@ exports.up = async function (knex) {
     tbl.string('category', 255).notNullable()
     tbl.string('image', 255)
     //? FOREIGN KEY ALWAYS GOES ON THE BOTTOM ?//
-    tbl.integer('user_id').unsigned().notNullable().references('id').inTable('users').onUpdate('CASCADE').onDelete('CASCADE')
+    tbl.integer('user_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('users')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE')
   })
 }
 

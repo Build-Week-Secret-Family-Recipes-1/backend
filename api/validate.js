@@ -25,14 +25,12 @@ module.exports = {
   },
   login: (req, res, next) => {
     const {username, password } = req.body;
-    console.log('validate', username, password);
     if(!(username && password)) {
       next({ code: 400, message: "Missing required data: Username, Password" });
     } else {
       
     Users.findBy({ username })
       .then(user => {
-        console.log('login if');
         if(user && bcrypt.compareSync(password, user.password)){
           req.user = user;
           next();

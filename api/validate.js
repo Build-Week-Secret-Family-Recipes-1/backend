@@ -25,19 +25,26 @@ module.exports = {
   },
   login: (req, res, next) => {
     const {username, password } = req.body;
+    console.log('validate', username, password);
     if(!(username && password)) {
       next({ code: 400, message: "Missing required data: Username, Password" });
     } else {
+      
     Users.findBy({ username })
       .then(user => {
+        console.log('login if');
         if(user && bcrypt.compareSync(password, user.password)){
           req.user = user;
           next();
         } else {
-          next({ code: 401, message: "Username and/or Password incorrect!" });
+          console.log('login if 401', user);
+          next({ code: 401, message: "Username and/or Password incorrect!" }, console.log('validate 401', user));
         }
       })
-      .catch(err => next({ code: 500, message: "Error retrieving user data", err }));
+      .catch(err => {
+        console.log('validate err',err.message);
+        next({ code: 500, message: "Error retrieving user data", err }) 
+        });
     }
   },
   loggedon: (req, res, next) => {

@@ -23,6 +23,7 @@ server.get("/", (req, res) => res.json({api: "up"}));
 
 server.use((err, req, res, next) => {
   res.status(err.code).json(err);
+  console.log(err.message, 'error code')
 });
 
 module.exports = server;

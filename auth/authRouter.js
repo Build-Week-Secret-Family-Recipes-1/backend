@@ -22,6 +22,7 @@ router.post("/register", validate.register, (req, res, next) => {
 router.post("/login", validate.login, (req, res, next) => {
   const user = req.user;
   const token = generateToken(user);
+  console.log('login',  user, token)
   res.status(200).json({ user_id: user.id, username: user.username, token });
 });
 

@@ -1,5 +1,6 @@
-exports.seed = async function (knex) {
-  await knex('recipes').insert([
+exports.seed =  function (knex) {
+  return knex('recipes').del().then(function () { 
+    return knex('recipes').insert([
     // { id: 1, name: "Haggis", source: 'Grandma', category_id: 1 },
     // { id: 2, name: "Scottish Porridge", source: 'Uncle John', category_id: 1 },
     // { id: 3, name: "Kimbap", source: 'Aunt Kim', category_id: 2 },
@@ -21,4 +22,4 @@ exports.seed = async function (knex) {
       image: '',
       user_id: 2}
   ])
-}
+})}

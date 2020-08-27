@@ -20,6 +20,6 @@ exports.seed =  function (knex) {
       instructions: "instruction section",
       category: 'Korean', 
       image: '',
-      user_id: 2}
+      user_id: 1}
   ])
 })}

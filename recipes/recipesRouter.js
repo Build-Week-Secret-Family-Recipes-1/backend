@@ -10,7 +10,7 @@ router.get('/:id/recipes', (req, res) => {
   .then(user => {
     user ?
     Recipes.find(user_id)
-      .then(recipe => res.status(200).json(recipe))
+      .then(recipe => {res.status(200).json(recipe), console.log('recipes', recipe)})
       .catch(err => {
         console.log(err.message, user_id);
         res.status(500).json({ error: 'There was an error reaching the database! Recipes' })
@@ -79,7 +79,7 @@ router.post('/:id', (req, res) => {
       })
       .catch((err) => {
         console.log(err.message)
-        res.status(401).json({ error: 'Failed to post recipe'})
+        res.status(401).json({ error: 'Failed to post recipe'}, err.message)
       }):null
   })
   .catch((err) => {
